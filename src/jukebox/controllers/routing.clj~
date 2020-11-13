@@ -1,0 +1,11 @@
+(ns personal-web-app.controllers.routing
+  (:require [compojure.core :refer [defroutes GET POST]]
+            [clojure.string :as str]
+            [ring.util.response :as ring]
+            [personal-web-app.views.display :as view]
+            [personal-web-app.models.query :as model]
+            [ring.util.response :refer [response redirect]]))
+(defn index []
+  (view/index (model/all)))
+(defroutes routes
+  (GET "/" [] (index)))
