@@ -1,6 +1,6 @@
 (ns jukebox.models.migration
   (:require [clojure.java.jdbc :as sql]
-            [personal-web-app.models.query :as post]))
+            [jukebox.models.query :as post]))
 
 (defn migrated? []
   (-> (sql/query post/spec

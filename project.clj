@@ -12,7 +12,7 @@
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
                  ]
-  :repl-options {:init-ns jukebox}
+  :repl-options {:init-ns jukebox.web}
 :main ^:skip-aot jukebox.web
 :uberjar-name "app.jar"
 :ring {:handler jukebox/server

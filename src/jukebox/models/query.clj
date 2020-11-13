@@ -1,4 +1,4 @@
-(ns jukebox.query
+(ns jukebox.models.query
   (:require [clojure.java.jdbc :as sql]))
 
 (def spec (or (System/getenv "DATABASE_URL")

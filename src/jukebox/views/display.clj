@@ -1,4 +1,4 @@
-(ns jukebox.display
+(ns jukebox.views.display
   (:require [jukebox.views.layout :as layout]
             [hiccup.core :refer [h]]
             [hiccup.form :as form]
