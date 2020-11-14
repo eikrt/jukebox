@@ -7,7 +7,7 @@
             [ring.util.response :refer [response redirect]]))
 
 (defn index []
-  (view/index ))
+  (view/index ) (model/all))
 
 (defroutes routes
   (GET "/" [] (index)))

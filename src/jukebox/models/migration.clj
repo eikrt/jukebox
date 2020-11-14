@@ -5,7 +5,7 @@
 (defn migrated? []
   (-> (sql/query post/spec
                  [(str "select count(*) from information_schema.tables "
-                       "where table_name='posts'")])
+                       "where table_name='tracks'")])
       first :count pos?))
 
 (defn migrate []
@@ -15,9 +15,13 @@
                         (sql/create-table-ddl
                          :posts
                          [[:id :serial "PRIMARY KEY"]
-                          [:body :varchar "NOT NULL"]
-                          [:category :varchar "NOT NULL"]
                           [:title :varchar "NOT NULL"]
+                          [:artist :varchar "NOT NULL"]
+                          [:album :varchar "NOT NULL"]
+                          [:tags :varchar "NOT NULL"]
+                          [:genre :varchar "NOT NULL"]
+                          [:release_year :integer "NOT NULL"]
+                          [:length :integer "NOT NULL"]
                           [:created_at :timestamp
                            "NOT NULL" "DEFAULT CURRENT_TIMESTAMP"]]))
     (println "done")))
