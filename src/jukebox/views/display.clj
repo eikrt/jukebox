@@ -35,4 +35,4 @@
   (layout/common "Jukebox"
                  ;; (post-form)
                  [:div {:class "clear"}]
-                 (display-tracks)))
+                 (display-tracks tracks)))

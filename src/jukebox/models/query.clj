@@ -13,4 +13,4 @@
   (into [] (sql/query spec ["select * from tracks order by id desc"])))
 
 (defn create [post]
-  (sql/insert-multi! spec :posts [{:body (first post) :category (second post) :title (nth post 2)}]))
+  (sql/insert-multi! spec :tracks [{:title (first post) :artist (second post) :album (nth post 2) :tags (nth post 3) :genre (nth post 4) :filepath (nth post 5) :release_year (nth post 6) :length (nth post 7) }]))

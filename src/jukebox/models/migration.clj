@@ -13,15 +13,18 @@
     (print "Creating database structure") (flush)
     (sql/db-do-commands post/spec
                         (sql/create-table-ddl
-                         :posts
+                         :tracks
                          [[:id :serial "PRIMARY KEY"]
                           [:title :varchar "NOT NULL"]
                           [:artist :varchar "NOT NULL"]
                           [:album :varchar "NOT NULL"]
                           [:tags :varchar "NOT NULL"]
                           [:genre :varchar "NOT NULL"]
-                          [:release_year :integer "NOT NULL"]
-                          [:length :integer "NOT NULL"]
+                          
+                          [:filepath :varchar "NOT NULL"]
+                          [:release_year :integer]
+                          [:length :integer]
+                          
                           [:created_at :timestamp
                            "NOT NULL" "DEFAULT CURRENT_TIMESTAMP"]]))
     (println "done")))

@@ -6,8 +6,15 @@
             [jukebox.models.query :as model]
             [ring.util.response :refer [response redirect]]))
 
+(defn create
+  [post]
+  (when-not (str/blank? (first post))
+    (model/create post))
+  (ring/redirect "/"))
 (defn index []
-  (view/index ) (model/all))
+  (view/index  (model/all)))
 
 (defroutes routes
-  (GET "/" [] (index)))
+  (GET "/" [] (index))
+
+  )

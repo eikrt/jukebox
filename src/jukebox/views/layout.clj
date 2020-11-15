@@ -14,7 +14,7 @@
     [:div {:id "header"}
      [:div {:id "header_box"}
       [:h1 {:class "container"} [:a {:href "/" :id "stamp"} "Jukebox"]]]]
-
+    [:div {:id "jukebox"} [:script {:src "../js/jukebox.js" :type "text/javascript"} ]]
     [:div {:id "content" :class "container"} body]]))
 
 (defn not-found []

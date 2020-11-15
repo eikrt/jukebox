@@ -18,9 +18,31 @@
 (defn server [port]
   (def server (ring/run-jetty application {:port port :join? false})))
 (defn start-server []
-  ;(schema/migrate)
+  (schema/migrate)
   (let [port (Integer. (or (System/getenv "PORT") "8222"))]
     (server port)))
-
+(defn crud
+  []
+  
+  (schema/migrate)
+  (pr "title")
+  (def title (read-line))
+  (pr "artist")
+  (def artist (read-line))
+  (pr "album")
+  (def album (read-line))
+  (pr "tags")
+  (def tags (read-line))
+  (pr "genre")
+  (def genre (read-line))
+  (pr "filepath")
+  (def filepath (read-line))
+  (pr "release_year")
+  (def release_year (Integer/parseInt(read-line)))
+  (pr "length")
+  (def length (Integer/parseInt(read-line)))
+  (posts/create [title artist album tags genre filepath release_year length])
+  )
 (defn -main [& args]
-     (start-server))
+  (start-server))
+
