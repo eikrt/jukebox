@@ -72427,11 +72427,23 @@ goog.provide("jukebox.front.front");
 goog.require("cljs.core");
 goog.require("reagent.core");
 goog.require("reagent.dom");
+jukebox.front.front.state_track = reagent.core.atom.call(null, "Track1.wav");
 cljs.core.enable_console_print_BANG_.call(null);
-jukebox.front.front.hello_component = function jukebox$front$front$hello_component(name) {
-  return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "p", "p", 151049309), "hello, ", name, "!"], null);
+jukebox.front.front.onclick = function jukebox$front$front$onclick(track) {
+  cljs.core.reset_BANG_.call(null, jukebox.front.front.state_track, track);
+  return reagent.core.force_update_all.call(null);
 };
-jukebox.front.front.say_hello = function jukebox$front$front$say_hello() {
-  return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [jukebox.front.front.hello_component, "world"], null);
+jukebox.front.front.player_component = function jukebox$front$front$player_component(track) {
+  return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div", "div", 1057191632), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "id", "id", -1388402092), "player"], null), new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "audio", "audio", 1819127321), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "src", "src", -1651076051), 
+  ["../resources/audio/", cljs.core.str.cljs$core$IFn$_invoke$arity$1(jukebox.front.front.state_track)].join(""), new cljs.core.Keyword(null, "controls", "controls", 1340701452), "controls"], null), "\n            Your browser does not support the\n            ", new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "code", "code", 1586293142), "audio"], null), " element.\n    \n"], null)], null);
 };
-reagent.dom.render.call(null, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [jukebox.front.front.say_hello], null), document.getElementById("jukebox"));
+jukebox.front.front.track_list = function jukebox$front$front$track_list(track) {
+  return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div", "div", 1057191632), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "id", "id", -1388402092), "track-list"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "input", "input", 556931961), new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "type", "type", 1174270348), 
+  "button", new cljs.core.Keyword(null, "value", "value", 305978217), "song", new cljs.core.Keyword(null, "on-click", "on-click", 1632826543), function() {
+    return jukebox.front.front.onclick.call(null, track);
+  }], null)], null)], null);
+};
+jukebox.front.front.page_component = function jukebox$front$front$page_component() {
+  return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div", "div", 1057191632), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [jukebox.front.front.player_component, "Track1.wav"], null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [jukebox.front.front.track_list], null)], null);
+};
+reagent.dom.render.call(null, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [jukebox.front.front.page_component], null), document.getElementById("jukebox"));
