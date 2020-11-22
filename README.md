@@ -1,14 +1,14 @@
-# jukebox
+# Jukebox
 
-A Clojure library designed to ... well, that part is up to you.
+Media server for playing music, visualizing it and reading text.
 
-## Usage
+## Roadmap
 
-FIXME
+proof-of-concept (we are here) -> visualizer -> text reader -> proper streaming capabilities
 
 ## License
 
-Copyright © 2020 FIXME
+Copyright © 2020
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at

@@ -4,6 +4,7 @@
             [ring.util.response :as ring]
             [jukebox.views.display :as view]
             [jukebox.models.query :as model]
+            [jukebox.views.api :as api]
             [ring.util.response :refer [response redirect]]))
 
 (defn create
@@ -13,8 +14,12 @@
   (ring/redirect "/"))
 (defn index []
   (view/index  (model/all)))
-
+(defn api []
+  (api/api)
+  )
 (defroutes routes
+  
   (GET "/" [] (index))
+  (GET "/api" [] (api))
 
   )

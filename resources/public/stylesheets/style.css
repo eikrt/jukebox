@@ -24,7 +24,7 @@ p {
     padding: 22px;
     font-family: Monaco, sans-serif;
     font-size: 18px;
-    color: lightcoral;
+    color: black;
 }
 #header_box h1{
     padding-top: 16px;
@@ -44,7 +44,7 @@ p {
 }
 
 a {
-    
+    color:black;
     font-family: Monaco, monospace;
 }
 h1 {

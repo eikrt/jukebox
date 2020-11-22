@@ -6,7 +6,7 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/java.jdbc "0.6.1"]
                  [org.clojure/clojurescript "1.10.773"]
-                 
+                 [org.clojure/core.async "1.3.610"] 
                  [org.clojure/tools.logging "1.1.0"]
                  [reagent "0.10.0"]
                  
@@ -16,7 +16,7 @@
                  [ring/ring-defaults "0.1.2"]
                  [compojure "1.4.0"]
                  [hiccup "1.0.5"]
-                 
+                 [cljs-http "0.1.46"] 
                  ]
  :plugins [[lein-cljsbuild "1.1.8"]] 
   :repl-options {:init-ns jukebox.web}

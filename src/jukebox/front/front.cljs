@@ -1,9 +1,14 @@
 (ns jukebox.front.front
+  
+  (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [reagent.core :as r]
             [reagent.dom :as rdom]
-            ))
-(def state-track (r/atom "Track1.wav"))
-(enable-console-print!)
+            [cljs-http.client :as http]
+            [cljs.core.async :refer [<!]])
+            )
+
+  
+(def state-track (r/atom ""))
 ;(defn debug? []
  ; (re-find #"debug" (-> js/document .-location .-search)))
 
@@ -12,13 +17,19 @@
                                         ;                   (.getElementById js/document "jukebox"))
 
 (defn onclick [track]
+  
   (reset! state-track track)
-  (r/force-update-all)
+(go (let [response (<! (http/get "/api"
+                                 {:with-credentials? false
+                                  :query-params {"since" 135}}))]
+      (js/console.log  (:body response)))) 
   )
-(defn player-component [track]
- [:div {:id "player"} 
+(defn player-component []
+ 
+  [:div {:id "player"}
+   [:p "Currently playing:" @state-track]
   [:audio
-  {:src (str "../resources/audio/" state-track), :controls "controls"}
+  {:src (str "../audio/"  (js/decodeURI @state-track)), :controls "controls"}
   "\n            Your browser does not support the\n            "
   [:code "audio"]
   " element.\n    \n"]
@@ -26,15 +37,11 @@
   )
 (defn track-list [track]
   [:div {:id "track-list"} 
-   [:input {:type "button" :value "song" :on-click #(onclick track)}]
+   [:input {:type "button" :value track :on-click #(onclick track)}]
    ]
   )
 (defn page-component []
-  [:div  [player-component "Track1.wav"]
-  [track-list]])
-;(defn render-front []
- ; (rdom/render
-  ; [say-hello]
-   ;(.-body js/document)))
-(rdom/render [page-component]
+  [:div  [player-component]
+  [track-list "Islands/6. Islands.wav"]])
+  (rdom/render [page-component]
              (.getElementById js/document "jukebox"))
