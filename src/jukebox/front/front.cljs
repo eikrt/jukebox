@@ -21,7 +21,7 @@
   (reset! state-track track)
 (go (let [response (<! (http/get "/api"
                                  {:with-credentials? false
-                                  :query-params {"since" 135}}))]
+                                  }))]
       (js/console.log  (:body response)))) 
   )
 (defn player-component []

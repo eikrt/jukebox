@@ -11,7 +11,11 @@
             [jukebox.models.migration :as schema]
             [jukebox.views.api :as api]
             [ring.util.response :refer [response]]
-            [ring.middleware.json :refer [wrap-json-response]])
+            [ring.middleware.json :refer [wrap-json-response]]
+            [ring.middleware.json :refer [wrap-json-body]]
+            [ring.middleware.json :refer [wrap-json-params]]
+            [compojure.handler :as handler]
+            )
   (:gen-class))
 
 
@@ -39,10 +43,10 @@
     (handler req)))
 (def application
  (routes
-  (-> api-routes (wrap-json-response api/api))
-  (-> app-routes (wrap-routes wrap-app-middleware))
+  (-> api-routes) 
+  (-> app-routes)
   ))                                      ;
-;(def application (wrap-defaults routes site-defaults))
+;(def application (wrap-defaults api-routes site-defaults))
 (defn server [port]
   (def server (ring/run-jetty application {:port port :join? false})))
 (defn start-server []

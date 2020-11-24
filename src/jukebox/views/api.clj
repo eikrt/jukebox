@@ -7,8 +7,14 @@
             [ring.util.response :refer [response]]
            
             ))
-(defn api-content [request]
-  (response {:title "pumpetti"}))
+(defn api-content []
+
+  [:div {:class "api-content"}
+   [:p "pumpettipumpetti!"]
+   ]
+  )
   
-(defn api [request]
-  (api-content request))
+(defn api []
+  (layout/api "Jukebox"
+                 [:div {:class "api"}]
+                 (api-content)))
