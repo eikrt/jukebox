@@ -4,14 +4,11 @@
             [hiccup.form :as form]
             [ring.util.anti-forgery :as anti-forgery]
             [clojure.string :as str]
-            
+            [ring.util.response :refer [response]]
            
             ))
-(defn api-content []
-  [:div {:class "pumpetti"}
-   [:p "pumpetti"]])
+(defn api-content [request]
+  (response {:title "pumpetti"}))
   
-(defn api []
-  (layout/common "api"
-                 [:div {:class "clear"}]
-                 (api-content)))
+(defn api [request]
+  (api-content request))

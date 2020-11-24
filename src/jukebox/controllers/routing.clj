@@ -17,9 +17,14 @@
 (defn api []
   (api/api)
   )
-(defroutes routes
+
+(defroutes api-routes
+  
+  (GET "/api" [] (api))
+
+  )
+(defroutes app-routes
   
   (GET "/" [] (index))
-  (GET "/api" [] (api))
 
   )

@@ -9,12 +9,12 @@
                  [org.clojure/core.async "1.3.610"] 
                  [org.clojure/tools.logging "1.1.0"]
                  [reagent "0.10.0"]
-                 
                  [org.postgresql/postgresql "9.4-1201-jdbc41"]
-                 [ring "1.4.0"]
-                 [ring/ring-jetty-adapter "1.4.0"]
-                 [ring/ring-defaults "0.1.2"]
-                 [compojure "1.4.0"]
+                 [ring/ring-core "1.8.2"]
+                 [ring/ring-jetty-adapter "1.8.2"]
+                 [ring/ring-defaults "0.3.2"]
+                 [ring/ring-json "0.5.0"]
+                 [compojure "1.6.2"]
                  [hiccup "1.0.5"]
                  [cljs-http "0.1.46"] 
                  ]
@@ -26,11 +26,10 @@
        :init jukebox/migration/migrate}
 :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                                 [ring-mock "0.1.5"]
-                                [cider/piggieback "0.5.2"]
                                 
                                 ]
 
-                 :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}}
+                 }
            :uberjar {:aot :all}}
 
 :cljsbuild {
