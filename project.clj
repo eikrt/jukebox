@@ -8,6 +8,7 @@
                  [org.clojure/clojurescript "1.10.773"]
                  [org.clojure/core.async "1.3.610"] 
                  [org.clojure/tools.logging "1.1.0"]
+                 [cheshire "5.10.0"]
                  [reagent "0.10.0"]
                  [org.postgresql/postgresql "9.4-1201-jdbc41"]
                  [ring/ring-core "1.8.2"]

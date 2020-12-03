@@ -5,16 +5,13 @@
             [ring.util.anti-forgery :as anti-forgery]
             [clojure.string :as str]
             [ring.util.response :refer [response]]
-           
+            [cheshire.core :refer :all]
             ))
 (defn api-content []
-
-  [:div {:class "api-content"}
-   [:p "pumpettipumpetti!"]
-   ]
+  (generate-string {:pumpetti "pumpetti"})
   )
   
 (defn api []
-  (layout/api "Jukebox"
-                 [:div {:class "api"}]
-                 (api-content)))
+  ;(layout/api "Jukebox"
+   ;              [:div {:class "api"}]
+                 (api-content))

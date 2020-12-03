@@ -19,10 +19,7 @@
 (defn onclick [track]
   
   (reset! state-track track)
-(go (let [response (<! (http/get "/api"
-                                 {:with-credentials? false
-                                  }))]
-      (js/console.log  (:body response)))) 
+  
   )
 (defn player-component []
  
@@ -35,6 +32,13 @@
   " element.\n    \n"]
 ]
   )
+(defn get-track-list []
+
+(go (let [response (<! (http/get "/api"
+                                 {:with-credentials? false
+                                  }))]
+      (js/console.log  (:body response)))) 
+  )
 (defn track-list [track]
   [:div {:id "track-list"} 
    [:input {:type "button" :value track :on-click #(onclick track)}]
@@ -42,6 +46,8 @@
   )
 (defn page-component []
   [:div  [player-component]
-  [track-list "Islands/6. Islands.wav"]])
+   ;[track-list "Islands/6. Islands.wav"]
+   [track-list (get-track-list)]
+  )
   (rdom/render [page-component]
              (.getElementById js/document "jukebox"))
