@@ -7,11 +7,15 @@
             [ring.util.response :refer [response]]
             [cheshire.core :refer :all]
             ))
-(defn api-content []
-  (generate-string {:pumpetti "pumpetti"})
-  )
-  
-(defn api []
-  ;(layout/api "Jukebox"
-   ;              [:div {:class "api"}]
-                 (api-content))
+(defn api-content [tracks]
+ ; (map (fn [track]
+ ;        (generate-string  track {:pretty true)
+
+;                  )
+ ;  (first tracks))
+                                        ;)
+  (generate-string (first tracks) {:pretty true})
+)
+
+(defn api [tracks]
+  (api-content tracks))

@@ -15,7 +15,7 @@
 (defn index []
   (view/index  (model/all)))
 (defn api []
-  (api/api)
+  (api/api (model/all))
   )
 
 (defroutes api-routes

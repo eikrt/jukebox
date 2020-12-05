@@ -36,7 +36,8 @@
 
 (go (let [response (<! (http/get "/api"
                                  {:with-credentials? false
-                                  }))]
+                                  :response-format :json
+          :keywords? true}))]
       (js/console.log  (:body response)))) 
   )
 (defn track-list [track]
@@ -48,6 +49,6 @@
   [:div  [player-component]
    ;[track-list "Islands/6. Islands.wav"]
    [track-list (get-track-list)]
-  )
+  ])
   (rdom/render [page-component]
              (.getElementById js/document "jukebox"))
