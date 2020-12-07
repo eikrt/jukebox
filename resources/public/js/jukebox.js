@@ -96958,6 +96958,7 @@ goog.require("reagent.dom");
 goog.require("cljs_http.client");
 goog.require("cljs.core.async");
 jukebox.front.front.state_track = reagent.core.atom.call(null, "");
+jukebox.front.front.api_response = reagent.core.atom.call(null, "");
 jukebox.front.front.onclick = function jukebox$front$front$onclick(track) {
   return cljs.core.reset_BANG_.call(null, jukebox.front.front.state_track, track);
 };
@@ -96966,45 +96967,46 @@ jukebox.front.front.player_component = function jukebox$front$front$player_compo
   5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "audio", "audio", 1819127321), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "src", "src", -1651076051), ["../audio/", cljs.core.str.cljs$core$IFn$_invoke$arity$1(decodeURI(cljs.core.deref.call(null, jukebox.front.front.state_track)))].join(""), new cljs.core.Keyword(null, "controls", "controls", 1340701452), "controls"], null), "\n            Your browser does not support the\n            ", new cljs.core.PersistentVector(null, 
   2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "code", "code", 1586293142), "audio"], null), " element.\n    \n"], null)], null);
 };
-jukebox.front.front.get_track_list = function jukebox$front$front$get_track_list() {
+jukebox.front.front.get_from_api_BANG_ = function jukebox$front$front$get_from_api_BANG_() {
   var c__4680__auto__ = cljs.core.async.chan.call(null, 1);
   cljs.core.async.impl.dispatch.run.call(null, function() {
     var f__4681__auto__ = function() {
-      var switch__4649__auto__ = function(state_22792) {
-        var state_val_22793 = state_22792[1];
-        if (state_val_22793 === 1) {
-          var inst_22783 = [new cljs.core.Keyword(null, "with-credentials?", "with-credentials?", -1773202222), new cljs.core.Keyword(null, "response-format", "response-format", 1664465322), new cljs.core.Keyword(null, "keywords?", "keywords?", 764949733)];
-          var inst_22784 = [false, new cljs.core.Keyword(null, "json", "json", 1279968570), true];
-          var inst_22785 = cljs.core.PersistentHashMap.fromArrays(inst_22783, inst_22784);
-          var inst_22786 = cljs_http.client.get.call(null, "/api", inst_22785);
-          var state_22792__$1 = state_22792;
-          return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_22792__$1, 2, inst_22786);
+      var switch__4649__auto__ = function(state_78504) {
+        var state_val_78505 = state_78504[1];
+        if (state_val_78505 === 1) {
+          var inst_78494 = [new cljs.core.Keyword(null, "with-credentials?", "with-credentials?", -1773202222), new cljs.core.Keyword(null, "response-format", "response-format", 1664465322), new cljs.core.Keyword(null, "keywords?", "keywords?", 764949733)];
+          var inst_78495 = [false, new cljs.core.Keyword(null, "json", "json", 1279968570), true];
+          var inst_78496 = cljs.core.PersistentHashMap.fromArrays(inst_78494, inst_78495);
+          var inst_78497 = cljs_http.client.get.call(null, "/api", inst_78496);
+          var state_78504__$1 = state_78504;
+          return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_78504__$1, 2, inst_78497);
         } else {
-          if (state_val_22793 === 2) {
-            var inst_22788 = state_22792[2];
-            var inst_22789 = (new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(inst_22788);
-            var inst_22790 = console.log(inst_22789);
-            var state_22792__$1 = state_22792;
-            return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_22792__$1, inst_22790);
+          if (state_val_78505 === 2) {
+            var inst_78499 = state_78504[2];
+            var inst_78500 = (new cljs.core.Keyword(null, "body", "body", -2049205669)).cljs$core$IFn$_invoke$arity$1(inst_78499);
+            var inst_78501 = cljs.core.js__GT_clj.call(null, inst_78500);
+            var inst_78502 = cljs.core.reset_BANG_.call(null, jukebox.front.front.api_response, inst_78501);
+            var state_78504__$1 = state_78504;
+            return cljs.core.async.impl.ioc_helpers.return_chan.call(null, state_78504__$1, inst_78502);
           } else {
             return null;
           }
         }
       };
       return function() {
-        var jukebox$front$front$get_track_list_$_state_machine__4650__auto__ = null;
-        var jukebox$front$front$get_track_list_$_state_machine__4650__auto____0 = function() {
-          var statearr_22794 = [null, null, null, null, null, null, null];
-          statearr_22794[0] = jukebox$front$front$get_track_list_$_state_machine__4650__auto__;
-          statearr_22794[1] = 1;
-          return statearr_22794;
+        var jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto__ = null;
+        var jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto____0 = function() {
+          var statearr_78506 = [null, null, null, null, null, null, null];
+          statearr_78506[0] = jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto__;
+          statearr_78506[1] = 1;
+          return statearr_78506;
         };
-        var jukebox$front$front$get_track_list_$_state_machine__4650__auto____1 = function(state_22792) {
+        var jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto____1 = function(state_78504) {
           while (true) {
             var ret_value__4651__auto__ = function() {
               try {
                 while (true) {
-                  var result__4652__auto__ = switch__4649__auto__.call(null, state_22792);
+                  var result__4652__auto__ = switch__4649__auto__.call(null, state_78504);
                   if (cljs.core.keyword_identical_QMARK_.call(null, result__4652__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
                     continue;
                   } else {
@@ -97012,13 +97014,13 @@ jukebox.front.front.get_track_list = function jukebox$front$front$get_track_list
                   }
                   break;
                 }
-              } catch (e22795) {
-                var ex__4653__auto__ = e22795;
-                var statearr_22796_22799 = state_22792;
-                statearr_22796_22799[2] = ex__4653__auto__;
-                if (cljs.core.seq.call(null, state_22792[4])) {
-                  var statearr_22797_22800 = state_22792;
-                  statearr_22797_22800[1] = cljs.core.first.call(null, state_22792[4]);
+              } catch (e78507) {
+                var ex__4653__auto__ = e78507;
+                var statearr_78508_78511 = state_78504;
+                statearr_78508_78511[2] = ex__4653__auto__;
+                if (cljs.core.seq.call(null, state_78504[4])) {
+                  var statearr_78509_78512 = state_78504;
+                  statearr_78509_78512[1] = cljs.core.first.call(null, state_78504[4]);
                 } else {
                   throw ex__4653__auto__;
                 }
@@ -97026,8 +97028,8 @@ jukebox.front.front.get_track_list = function jukebox$front$front$get_track_list
               }
             }();
             if (cljs.core.keyword_identical_QMARK_.call(null, ret_value__4651__auto__, new cljs.core.Keyword(null, "recur", "recur", -437573268))) {
-              var G__22801 = state_22792;
-              state_22792 = G__22801;
+              var G__78513 = state_78504;
+              state_78504 = G__78513;
               continue;
             } else {
               return ret_value__4651__auto__;
@@ -97035,36 +97037,44 @@ jukebox.front.front.get_track_list = function jukebox$front$front$get_track_list
             break;
           }
         };
-        jukebox$front$front$get_track_list_$_state_machine__4650__auto__ = function(state_22792) {
+        jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto__ = function(state_78504) {
           switch(arguments.length) {
             case 0:
-              return jukebox$front$front$get_track_list_$_state_machine__4650__auto____0.call(this);
+              return jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto____0.call(this);
             case 1:
-              return jukebox$front$front$get_track_list_$_state_machine__4650__auto____1.call(this, state_22792);
+              return jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto____1.call(this, state_78504);
           }
           throw new Error("Invalid arity: " + arguments.length);
         };
-        jukebox$front$front$get_track_list_$_state_machine__4650__auto__.cljs$core$IFn$_invoke$arity$0 = jukebox$front$front$get_track_list_$_state_machine__4650__auto____0;
-        jukebox$front$front$get_track_list_$_state_machine__4650__auto__.cljs$core$IFn$_invoke$arity$1 = jukebox$front$front$get_track_list_$_state_machine__4650__auto____1;
-        return jukebox$front$front$get_track_list_$_state_machine__4650__auto__;
+        jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto__.cljs$core$IFn$_invoke$arity$0 = jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto____0;
+        jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto__.cljs$core$IFn$_invoke$arity$1 = jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto____1;
+        return jukebox$front$front$get_from_api_BANG__$_state_machine__4650__auto__;
       }();
     }();
     var state__4682__auto__ = function() {
-      var statearr_22798 = f__4681__auto__.call(null);
-      statearr_22798[6] = c__4680__auto__;
-      return statearr_22798;
+      var statearr_78510 = f__4681__auto__.call(null);
+      statearr_78510[6] = c__4680__auto__;
+      return statearr_78510;
     }();
     return cljs.core.async.impl.ioc_helpers.run_state_machine_wrapped.call(null, state__4682__auto__);
   });
   return c__4680__auto__;
 };
-jukebox.front.front.track_list = function jukebox$front$front$track_list(track) {
+jukebox.front.front.track_list = function jukebox$front$front$track_list() {
+  cljs.core.pr.call(null, jukebox.front.front.api_response);
   return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div", "div", 1057191632), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "id", "id", -1388402092), "track-list"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "input", "input", 556931961), new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "type", "type", 1174270348), 
-  "button", new cljs.core.Keyword(null, "value", "value", 305978217), track, new cljs.core.Keyword(null, "on-click", "on-click", 1632826543), function() {
-    return jukebox.front.front.onclick.call(null, track);
+  "button", new cljs.core.Keyword(null, "value", "value", 305978217), cljs.core.deref.call(null, jukebox.front.front.api_response), new cljs.core.Keyword(null, "on-click", "on-click", 1632826543), function() {
+    return jukebox.front.front.onclick.call(null, jukebox.front.front.track);
+  }], null)], null)], null);
+};
+jukebox.front.front.start_listening = function jukebox$front$front$start_listening() {
+  return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div", "div", 1057191632), new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "id", "id", -1388402092), "start-listening"], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "input", "input", 556931961), new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "type", "type", 1174270348), 
+  "button", new cljs.core.Keyword(null, "value", "value", 305978217), "Start Listening!", new cljs.core.Keyword(null, "on-click", "on-click", 1632826543), function() {
+    return jukebox.front.front.get_from_api_BANG_.call(null);
   }], null)], null)], null);
 };
 jukebox.front.front.page_component = function jukebox$front$front$page_component() {
-  return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div", "div", 1057191632), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [jukebox.front.front.player_component], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [jukebox.front.front.track_list, jukebox.front.front.get_track_list.call(null)], null)], null);
+  return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div", "div", 1057191632), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [jukebox.front.front.player_component], null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [jukebox.front.front.start_listening], null), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [jukebox.front.front.track_list], 
+  null)], null);
 };
 reagent.dom.render.call(null, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [jukebox.front.front.page_component], null), document.getElementById("jukebox"));

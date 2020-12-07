@@ -9,7 +9,9 @@
 
   
 (def state-track (r/atom ""))
-;(defn debug? []
+
+(def api-response (r/atom ""))
+            ;(defn debug? []
  ; (re-find #"debug" (-> js/document .-location .-search)))
 
 
@@ -32,23 +34,36 @@
   " element.\n    \n"]
 ]
   )
-(defn get-track-list []
 
-(go (let [response (<! (http/get "/api"
-                                 {:with-credentials? false
-                                  :response-format :json
+
+
+(defn get-from-api! []
+  (go
+    (let [response (<! (http/get "/api" {:with-credentials? false
+                                         :response-format :json
           :keywords? true}))]
-      (js/console.log  (:body response)))) 
+      (reset! api-response (js->clj (:body response)))))
+  
   )
-(defn track-list [track]
+  
+(defn track-list []
+  
+  (pr api-response)
   [:div {:id "track-list"} 
-   [:input {:type "button" :value track :on-click #(onclick track)}]
+   [:input {:type "button" :value @api-response :on-click #(onclick track)}]
    ]
   )
+(defn start-listening []
+  [:div {:id "start-listening"}
+   [:input {:type "button" :value "Start Listening!" :on-click #(get-from-api!)}]]
+   )
 (defn page-component []
+
   [:div  [player-component]
-   ;[track-list "Islands/6. Islands.wav"]
-   [track-list (get-track-list)]
+                                        ; [track-list "Islands/6. Islands.wav"]
+   [start-listening]
+   [track-list ]
+   ;[track-list (get-track-list)]
   ])
   (rdom/render [page-component]
              (.getElementById js/document "jukebox"))
